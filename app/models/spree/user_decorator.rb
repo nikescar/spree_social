@@ -4,6 +4,7 @@ Spree::User.class_eval do
   devise :omniauthable
 
   def apply_omniauth(omniauth)
+    self.email = omniauth["info"]["email"]
     user_authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
   end
 
