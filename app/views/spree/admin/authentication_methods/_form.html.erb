@@ -25,3 +25,8 @@
   <%= auth_form.radio_button :active, :true %><%= t(:yes) %>
   <%= auth_form.radio_button :active, :false %><%= t(:no) %>
 <% end %>
+
+<%= auth_form.field_container :ca_path do %>
+  <%= auth_form.label :ca_path, t(:ca_path) %><br />
+  <%= auth_form.text_field :ca_path %>
+<% end %>
