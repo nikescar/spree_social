@@ -19,7 +19,7 @@ class Spree::AuthenticationMethod < ActiveRecord::Base
 
   def client_options
     {}.tap do |opts|
-      opts.merge!(:ssl => {:ca_path => ca_path}) if ca_path and !ca_path.blank?
+      opts.merge!(:ssl => {:ca_path => ca_path}) if respond_to?(:ca_path) and ca_path and !ca_path.blank?
     end
   end
 
