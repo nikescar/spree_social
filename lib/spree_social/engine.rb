@@ -28,6 +28,7 @@ module SpreeSocial
   def self.init_provider(provider)
     return unless ActiveRecord::Base.connection.table_exists?('spree_authentication_methods')
     key, secret = nil
+    client_options = {}
     Spree::AuthenticationMethod.where(:environment => ::Rails.env).each do |auth_method|
       if auth_method.provider == provider
         key = auth_method.api_key
