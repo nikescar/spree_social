@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Spree::OmniauthCallbacksController do
   let(:user) { Factory(:user) }
-  let(:omni_params) { mock("omni", :[] => nil).as_null_object }
+  let(:omni_params) { {'provider' => 'twitter', 'uid' => '1234'} }
   let(:order) { mock_model(Spree::Order, :associate_user => nil) }
 
   before(:each) do
@@ -71,6 +71,9 @@ describe Spree::OmniauthCallbacksController do
           controller.should_receive(:sign_in_and_redirect)
           controller.twitter
         end
+
+        it 'should associate the user_authentication to current_user'
+
       end
 
       context "when no existing user_authentication" do
